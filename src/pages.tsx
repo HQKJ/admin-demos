@@ -674,7 +674,6 @@ function RequestTable({
             <th>类型</th>
             <th>状态</th>
             <th>客户</th>
-            <th>金额</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -691,7 +690,6 @@ function RequestTable({
                 </span>
               </td>
               <td>{request.customer}</td>
-              <td>{request.amount}</td>
               <td>
                 <div className="row-actions">
                   <button className="text-button" onClick={() => onView(request)} type="button">
