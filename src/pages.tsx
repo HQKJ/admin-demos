@@ -683,7 +683,9 @@ function RequestTable({
               <td>{request.id}</td>
               <td>{request.appliedAt}</td>
               <td>{request.orderNo}</td>
-              <td>{request.type}</td>
+              <td>
+                <span className={`type-pill ${typeClassNames[request.type]}`}>{request.type}</span>
+              </td>
               <td>
                 <span className={`status-pill ${statusClassNames[request.status]}`}>
                   {request.status}
