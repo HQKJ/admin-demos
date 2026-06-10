@@ -589,7 +589,19 @@ function ReviewDialog({
   request: AfterSalesRequest | null
   onClose: () => void
 }) {
+  const [showRejectConfirm, setShowRejectConfirm] = useState(false)
+
   if (!request) return null
+
+  const handleClose = () => {
+    setShowRejectConfirm(false)
+    onClose()
+  }
+
+  const handleConfirmReject = () => {
+    setShowRejectConfirm(false)
+    onClose()
+  }
 
   return (
     <div className="modal-backdrop" role="presentation">
@@ -604,7 +616,7 @@ function ReviewDialog({
               </span>
             </div>
           </div>
-          <button className="icon-button" onClick={onClose} title="关闭" type="button">
+          <button className="icon-button" onClick={handleClose} title="关闭" type="button">
             <X size={18} />
           </button>
         </div>
@@ -641,10 +653,14 @@ function ReviewDialog({
         </div>
 
         <div className="dialog-footer">
-          <button className="secondary-button" onClick={onClose} type="button">
+          <button className="secondary-button" onClick={handleClose} type="button">
             取消
           </button>
-          <button className="secondary-button danger-button" type="button">
+          <button
+            className="secondary-button danger-button"
+            onClick={() => setShowRejectConfirm(true)}
+            type="button"
+          >
             拒绝
           </button>
           <button className="primary-button" type="button">
@@ -652,6 +668,27 @@ function ReviewDialog({
           </button>
         </div>
       </section>
+
+      {showRejectConfirm && (
+        <div className="confirm-backdrop" role="presentation">
+          <section aria-modal="true" className="confirm-dialog" role="alertdialog">
+            <h3>确认拒绝该售后申请？</h3>
+            <p>拒绝后请主动联系用户，清晰说明拒绝原因和后续可选处理方式。</p>
+            <div className="confirm-actions">
+              <button
+                className="secondary-button"
+                onClick={() => setShowRejectConfirm(false)}
+                type="button"
+              >
+                返回
+              </button>
+              <button className="primary-button danger-confirm-button" onClick={handleConfirmReject} type="button">
+                确认拒绝
+              </button>
+            </div>
+          </section>
+        </div>
+      )}
     </div>
   )
 }

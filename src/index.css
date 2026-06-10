@@ -561,6 +561,53 @@ td {
   border-color: #e6a5a0;
 }
 
+.confirm-backdrop {
+  position: fixed;
+  z-index: 70;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(19, 31, 42, 0.42);
+}
+
+.confirm-dialog {
+  width: min(420px, 100%);
+  padding: 22px;
+  border: 1px solid #e3e8ee;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 24px 60px rgba(24, 35, 45, 0.22);
+}
+
+.confirm-dialog h3 {
+  margin: 0;
+  color: #15202b;
+  font-size: 18px;
+}
+
+.confirm-dialog p {
+  margin: 10px 0 0;
+  color: #536372;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.danger-confirm-button {
+  background: #c0352b;
+}
+
+.danger-confirm-button:hover {
+  background: #a52d25;
+}
+
 .detail-section {
   display: grid;
   gap: 12px;
